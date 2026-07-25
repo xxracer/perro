@@ -1,0 +1,11 @@
+- main [ref=f1e2]:
+  - generic [ref=f1e3]:
+    - heading "Caja Simplificada" [level=1] [ref=f1e4]
+    - button "Cerrar sesión" [ref=f1e5] [cursor=pointer]
+  - generic [ref=f1e6]:
+    - heading "Apertura del día" [level=2] [ref=f1e7]
+    - paragraph [ref=f1e8]: Toque el día que va a trabajar.
+    - generic [ref=f1e9]:
+      - button "Viernes" [ref=f1e10] [cursor=pointer]
+      - button "Sábado" [ref=f1e11] [cursor=pointer]
+      - button "Domingo" [ref=f1e12] [cursor=pointer]

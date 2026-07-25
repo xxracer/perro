@@ -1,0 +1,63 @@
+- generic [active] [ref=f3e1]:
+  - main [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - heading "Caja Simplificada" [level=1] [ref=f3e4]
+      - button "Cerrar sesión" [ref=f3e5] [cursor=pointer]
+    - alert [ref=f3e23]: Viernes abierto.
+    - generic [ref=f3e24]:
+      - generic [ref=f3e25]:
+        - heading "Viernes" [level=2] [ref=f3e26]
+        - button "Cambiar día" [ref=f3e27] [cursor=pointer]
+      - group "Tipo de movimiento" [ref=f3e28]:
+        - generic [ref=f3e30] [cursor=pointer]:
+          - radio "Entrada" [checked] [ref=f3e31]
+          - generic [ref=f3e32]: Entrada
+        - generic [ref=f3e33] [cursor=pointer]:
+          - radio "Salida" [ref=f3e34]
+          - generic [ref=f3e35]: Salida
+      - group "Método de pago" [ref=f3e36]:
+        - generic [ref=f3e38] [cursor=pointer]:
+          - radio "Efectivo" [checked] [ref=f3e39]
+          - generic [ref=f3e40]: Efectivo
+        - generic [ref=f3e41] [cursor=pointer]:
+          - radio "Pago Móvil" [ref=f3e42]
+          - generic [ref=f3e43]: Pago Móvil
+      - group "Moneda" [ref=f3e44]:
+        - generic [ref=f3e46] [cursor=pointer]:
+          - radio "Bs" [ref=f3e47]
+          - generic [ref=f3e48]: Bs
+        - generic [ref=f3e49] [cursor=pointer]:
+          - radio "$" [checked] [ref=f3e50]
+          - generic [ref=f3e51]: $
+      - group "Productos vendidos" [ref=f3e52]:
+        - generic [ref=f3e54]:
+          - generic [ref=f3e56] [cursor=pointer]:
+            - checkbox "Perro" [ref=f3e57]
+            - generic [ref=f3e58]: Perro
+          - generic [ref=f3e60] [cursor=pointer]:
+            - checkbox "Hamburguesa" [ref=f3e61]
+            - generic [ref=f3e62]: Hamburguesa
+          - generic [ref=f3e64] [cursor=pointer]:
+            - checkbox "Pepito" [ref=f3e65]
+            - generic [ref=f3e66]: Pepito
+          - generic [ref=f3e68] [cursor=pointer]:
+            - checkbox "Malta" [ref=f3e69]
+            - generic [ref=f3e70]: Malta
+          - generic [ref=f3e72] [cursor=pointer]:
+            - checkbox "Refresco" [ref=f3e73]
+            - generic [ref=f3e74]: Refresco
+          - generic [ref=f3e76] [cursor=pointer]:
+            - checkbox "Cerveza" [ref=f3e77]
+            - generic [ref=f3e78]: Cerveza
+      - generic [ref=f3e79]:
+        - generic [ref=f3e80]: Monto total
+        - spinbutton "Monto total" [ref=f3e81]
+      - button "Agregar Entrada" [disabled] [ref=f3e83]
+      - generic [ref=f3e84]:
+        - paragraph [ref=f3e85]: No hay movimientos aún.
+        - generic [ref=f3e86]:
+          - generic [ref=f3e87]: Balance Viernes
+          - generic [ref=f3e88]: 0,00 $
+      - button "Cerrar Viernes" [disabled] [ref=f3e89]
+  - button "Open Next.js Dev Tools" [ref=f3e18] [cursor=pointer]
+  - alert [ref=f3e22]

@@ -1,0 +1,30 @@
+- main [ref=e2]:
+  - heading "Caja Simplificada" [level=1] [ref=e3]
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: Monto
+      - spinbutton "Monto" [ref=e7]
+      - generic [ref=e8]: Escriba el monto en números.
+    - generic [ref=e9]:
+      - button "Agregar Entrada" [disabled] [ref=e10]
+      - button "Agregar Salida" [disabled] [ref=e11]
+  - generic [ref=e12]:
+    - table [ref=e14]:
+      - rowgroup [ref=e15]:
+        - row [ref=e16]:
+          - columnheader "Nº Transacción" [ref=e17]
+          - columnheader "Tipo" [ref=e18]
+          - columnheader "Monto" [ref=e19]
+      - rowgroup [ref=e20]:
+        - row [ref=e21]:
+          - cell "001" [ref=e22]
+          - cell "Entrada" [ref=e23]
+          - cell "1500,00 US$" [ref=e24]
+        - row [ref=e25]:
+          - cell "002" [ref=e26]
+          - cell "Salida" [ref=e27]
+          - cell "350,00 US$" [ref=e28]
+    - generic [ref=e29]:
+      - generic [ref=e30]: Balance Total
+      - generic [ref=e31]: 1150,00 US$
+  - button "Generar Cierre Dominical" [ref=e32] [cursor=pointer]

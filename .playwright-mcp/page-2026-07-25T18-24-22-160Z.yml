@@ -1,0 +1,64 @@
+- main [ref=f4e2]:
+  - generic [ref=f4e3]:
+    - heading "Caja Simplificada" [level=1] [ref=f4e4]
+    - button "Cerrar sesión" [ref=f4e5] [cursor=pointer]
+  - generic [ref=f4e6]:
+    - heading "Apertura del día" [level=2] [ref=f4e7]
+    - paragraph [ref=f4e8]: Toque el día que va a trabajar.
+    - generic [ref=f4e9]:
+      - button "Viernes (abierto)" [ref=f4e10] [cursor=pointer]
+      - button "Sábado (abierto)" [ref=f4e11] [cursor=pointer]
+      - button "Domingo" [ref=f4e12] [cursor=pointer]
+  - generic [ref=f4e13]:
+    - heading "Viernes" [level=2] [ref=f4e14]
+    - paragraph [ref=f4e15]: "Abierto: 25/7/2026, 14:24:21"
+    - table [ref=f4e17]:
+      - rowgroup [ref=f4e18]:
+        - row [ref=f4e19]:
+          - columnheader "Nº" [ref=f4e20]
+          - columnheader "Tipo" [ref=f4e21]
+          - columnheader "Método" [ref=f4e22]
+          - columnheader "Monto" [ref=f4e23]
+          - columnheader "Referencia / Motivo" [ref=f4e24]
+      - rowgroup [ref=f4e25]:
+        - row [ref=f4e26]:
+          - cell "001" [ref=f4e27]
+          - cell "Entrada" [ref=f4e28]
+          - cell "Pago Móvil" [ref=f4e29]
+          - cell "1500,00 US$" [ref=f4e30]
+          - cell "TXN-12345" [ref=f4e31]
+    - generic [ref=f4e32]:
+      - generic [ref=f4e33]: Balance Viernes
+      - generic [ref=f4e34]: 1500,00 US$
+  - generic [ref=f4e35]:
+    - heading "Sábado" [level=2] [ref=f4e36]
+    - paragraph [ref=f4e37]: "Abierto: 25/7/2026, 14:24:21"
+    - table [ref=f4e39]:
+      - rowgroup [ref=f4e40]:
+        - row [ref=f4e41]:
+          - columnheader "Nº" [ref=f4e42]
+          - columnheader "Tipo" [ref=f4e43]
+          - columnheader "Método" [ref=f4e44]
+          - columnheader "Monto" [ref=f4e45]
+          - columnheader "Referencia / Motivo" [ref=f4e46]
+      - rowgroup [ref=f4e47]:
+        - row [ref=f4e48]:
+          - cell "002" [ref=f4e49]
+          - cell "Salida" [ref=f4e50]
+          - cell "-" [ref=f4e51]
+          - cell "350,00 US$" [ref=f4e52]
+          - cell "Compra de víveres" [ref=f4e53]
+    - generic [ref=f4e54]:
+      - generic [ref=f4e55]: Balance Sábado
+      - generic [ref=f4e56]: "-350,00 US$"
+  - generic [ref=f4e58]:
+    - generic [ref=f4e59]: Balance General Fin de Semana
+    - generic [ref=f4e60]: 1150,00 US$
+  - generic [ref=f4e61]:
+    - heading "Cierre del día" [level=2] [ref=f4e62]
+    - paragraph [ref=f4e63]: Toque el día que desea cerrar y guardar.
+    - generic [ref=f4e64]:
+      - button "Cerrar Viernes" [ref=f4e65] [cursor=pointer]
+      - button "Cerrar Sábado" [ref=f4e66] [cursor=pointer]
+      - button "Cerrar Domingo" [disabled] [ref=f4e67]
+    - button "Generar Cierre Dominical General" [ref=f4e68] [cursor=pointer]

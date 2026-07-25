@@ -1,0 +1,12 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - heading "Acceso - Caja Simplificada" [level=1] [ref=e3]
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: Usuario
+        - textbox "Usuario" [ref=e8]: Admin
+      - generic [ref=e9]:
+        - generic [ref=e10]: Contraseña
+        - textbox "Contraseña" [ref=e11]: GabyperroAle356
+      - button "Iniciar sesión" [ref=e12] [cursor=pointer]
+  - alert [ref=e13]

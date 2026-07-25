@@ -1,0 +1,17 @@
+- generic [active] [ref=f6e1]:
+  - button "Open Next.js Dev Tools" [ref=f6e18] [cursor=pointer]
+  - alert [ref=f6e22]
+  - main [ref=f6e23]:
+    - generic [ref=f6e24]:
+      - heading "Caja Simplificada" [level=1] [ref=f6e25]
+      - button "Cerrar sesión" [ref=f6e26] [cursor=pointer]
+    - generic [ref=f6e91]:
+      - heading "Apertura del día" [level=2] [ref=f6e92]
+      - paragraph [ref=f6e93]: Toque el día que va a trabajar.
+      - generic [ref=f6e94]:
+        - button "Viernes" [ref=f6e95] [cursor=pointer]
+        - button "Sábado" [ref=f6e96] [cursor=pointer]
+        - button "Domingo" [ref=f6e97] [cursor=pointer]
+    - generic [ref=f6e99]:
+      - generic [ref=f6e100]: Balance General Fin de Semana
+      - generic [ref=f6e101]: 270,00 US$

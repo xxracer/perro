@@ -1,0 +1,37 @@
+- generic [active] [ref=f1e1]:
+  - main [ref=f1e2]:
+    - heading "Caja Simplificada" [level=1] [ref=f1e3]
+    - generic [ref=f1e4]:
+      - generic [ref=f1e5]:
+        - generic [ref=f1e6]: Monto
+        - spinbutton "Monto" [ref=f1e7]
+        - generic [ref=f1e8]: Escriba el monto en números.
+      - generic [ref=f1e9]:
+        - button "Agregar Entrada" [disabled] [ref=f1e10]
+        - button "Agregar Salida" [disabled] [ref=f1e11]
+    - generic [ref=f1e12]:
+      - table [ref=f1e14]:
+        - rowgroup [ref=f1e15]:
+          - row [ref=f1e16]:
+            - columnheader "Nº Transacción" [ref=f1e17]
+            - columnheader "Tipo" [ref=f1e18]
+            - columnheader "Monto" [ref=f1e19]
+        - rowgroup [ref=f1e20]:
+          - row [ref=f1e21]:
+            - cell "001" [ref=f1e22]
+            - cell "Entrada" [ref=f1e23]
+            - cell "1500,00 US$" [ref=f1e24]
+          - row [ref=f1e25]:
+            - cell "002" [ref=f1e26]
+            - cell "Salida" [ref=f1e27]
+            - cell "350,00 US$" [ref=f1e28]
+          - row [ref=f1e43]:
+            - cell "003" [ref=f1e44]
+            - cell "Entrada" [ref=f1e45]
+            - cell "200,00 US$" [ref=f1e46]
+      - generic [ref=f1e29]:
+        - generic [ref=f1e30]: Balance Total
+        - generic [ref=f1e31]: 1350,00 US$
+    - button "Generar Cierre Dominical" [ref=f1e32] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f1e38] [cursor=pointer]
+  - alert [ref=f1e42]

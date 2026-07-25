@@ -1,0 +1,10 @@
+- main [ref=f2e2]:
+  - heading "Acceso - Caja Simplificada" [level=1] [ref=f2e3]
+  - generic [ref=f2e5]:
+    - generic [ref=f2e6]:
+      - generic [ref=f2e7]: Usuario
+      - textbox "Usuario" [ref=f2e8]
+    - generic [ref=f2e9]:
+      - generic [ref=f2e10]: Contraseña
+      - textbox "Contraseña" [ref=f2e11]
+    - button "Iniciar sesión" [ref=f2e12] [cursor=pointer]

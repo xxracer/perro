@@ -1,0 +1,14 @@
+- generic [active] [ref=f4e1]:
+  - main [ref=f4e2]:
+    - heading "Acceso - Caja Simplificada" [level=1] [ref=f4e3]
+    - alert [ref=f4e23]: Demasiados intentos. Intente de nuevo en 30 minutos.
+    - generic [ref=f4e5]:
+      - generic [ref=f4e6]:
+        - generic [ref=f4e7]: Usuario
+        - textbox "Usuario" [ref=f4e8]: Admin
+      - generic [ref=f4e9]:
+        - generic [ref=f4e10]: Contraseña
+        - textbox "Contraseña" [ref=f4e11]: wrong
+      - button "Iniciar sesión" [ref=f4e12] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f4e18] [cursor=pointer]
+  - alert [ref=f4e22]

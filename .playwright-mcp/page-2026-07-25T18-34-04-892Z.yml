@@ -1,0 +1,60 @@
+- generic [active] [ref=f6e1]:
+  - button "Open Next.js Dev Tools" [ref=f6e18] [cursor=pointer]
+  - alert [ref=f6e22]
+  - main [ref=f6e23]:
+    - generic [ref=f6e24]:
+      - heading "Caja Simplificada" [level=1] [ref=f6e25]
+      - button "Cerrar sesión" [ref=f6e26] [cursor=pointer]
+    - alert [ref=f6e90]: "No se pudo cerrar Viernes: Vercel Blob: Failed to retrieve the client token"
+    - generic [ref=f6e35]:
+      - generic [ref=f6e36]:
+        - heading "Viernes" [level=2] [ref=f6e37]
+        - button "Cambiar día" [ref=f6e38] [cursor=pointer]
+      - generic [ref=f6e39]:
+        - generic [ref=f6e40]: Monto
+        - spinbutton "Monto" [ref=f6e41]
+      - group "Método de pago (solo entradas)" [ref=f6e42]:
+        - generic [ref=f6e44] [cursor=pointer]:
+          - radio "Efectivo" [checked] [ref=f6e45]
+          - generic [ref=f6e46]: Efectivo
+        - generic [ref=f6e47] [cursor=pointer]:
+          - radio "Pago Móvil" [ref=f6e48]
+          - generic [ref=f6e49]: Pago Móvil
+      - generic [ref=f6e50]:
+        - generic [ref=f6e51]: Motivo del gasto (solo salidas)
+        - textbox "Motivo del gasto (solo salidas)" [ref=f6e52]
+      - generic [ref=f6e53]:
+        - button "Agregar Entrada" [disabled] [ref=f6e54]
+        - button "Agregar Salida" [disabled] [ref=f6e55]
+      - generic [ref=f6e56]:
+        - table [ref=f6e63]:
+          - rowgroup [ref=f6e64]:
+            - row [ref=f6e65]:
+              - columnheader "Nº" [ref=f6e66]
+              - columnheader "Tipo" [ref=f6e67]
+              - columnheader "Método" [ref=f6e68]
+              - columnheader "Monto" [ref=f6e69]
+              - columnheader "Ref. / Motivo" [ref=f6e70]
+          - rowgroup [ref=f6e71]:
+            - row [ref=f6e72]:
+              - cell "001" [ref=f6e73]
+              - cell "Entrada" [ref=f6e74]
+              - cell "Efectivo" [ref=f6e75]
+              - cell "200,00 US$" [ref=f6e76]
+              - cell [ref=f6e77]
+            - row [ref=f6e78]:
+              - cell "002" [ref=f6e79]
+              - cell "Salida" [ref=f6e80]
+              - cell "-" [ref=f6e81]
+              - cell "80,00 US$" [ref=f6e82]
+              - cell "Pan" [ref=f6e83]
+            - row [ref=f6e84]:
+              - cell "003" [ref=f6e85]
+              - cell "Entrada" [ref=f6e86]
+              - cell "Pago Móvil" [ref=f6e87]
+              - cell "150,00 US$" [ref=f6e88]
+              - cell "REF-PM-001" [ref=f6e89]
+        - generic [ref=f6e58]:
+          - generic [ref=f6e59]: Balance Viernes
+          - generic [ref=f6e60]: 270,00 US$
+      - button "Cerrar Viernes" [ref=f6e61] [cursor=pointer]

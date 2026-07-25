@@ -1,0 +1,95 @@
+- generic [active] [ref=f2e1]:
+  - button "Open Next.js Dev Tools" [ref=f2e18] [cursor=pointer]
+  - alert [ref=f2e22]
+  - main [ref=f2e23]:
+    - generic [ref=f2e24]:
+      - heading "Caja Simplificada" [level=1] [ref=f2e25]
+      - button "Cerrar sesión" [ref=f2e26] [cursor=pointer]
+    - generic [ref=f2e35]:
+      - generic [ref=f2e36]:
+        - heading "Viernes" [level=2] [ref=f2e37]
+        - button "Cambiar día" [ref=f2e38] [cursor=pointer]
+      - group "Tipo de movimiento" [ref=f2e39]:
+        - generic [ref=f2e41] [cursor=pointer]:
+          - radio "Entrada" [checked] [ref=f2e42]
+          - generic [ref=f2e43]: Entrada
+        - generic [ref=f2e44] [cursor=pointer]:
+          - radio "Salida" [ref=f2e45]
+          - generic [ref=f2e46]: Salida
+      - group "Método de pago" [ref=f2e47]:
+        - generic [ref=f2e49] [cursor=pointer]:
+          - radio "Efectivo" [checked] [ref=f2e50]
+          - generic [ref=f2e51]: Efectivo
+        - generic [ref=f2e52] [cursor=pointer]:
+          - radio "Pago Móvil" [ref=f2e53]
+          - generic [ref=f2e54]: Pago Móvil
+      - group "Moneda" [ref=f2e55]:
+        - generic [ref=f2e57] [cursor=pointer]:
+          - radio "Bs" [ref=f2e58]
+          - generic [ref=f2e59]: Bs
+        - generic [ref=f2e60] [cursor=pointer]:
+          - radio "$" [checked] [ref=f2e61]
+          - generic [ref=f2e62]: $
+      - group "Productos vendidos" [ref=f2e63]:
+        - generic [ref=f2e65]:
+          - generic [ref=f2e67] [cursor=pointer]:
+            - checkbox "Perro" [ref=f2e68]
+            - generic [ref=f2e69]: Perro
+          - generic [ref=f2e71] [cursor=pointer]:
+            - checkbox "Hamburguesa" [ref=f2e72]
+            - generic [ref=f2e73]: Hamburguesa
+          - generic [ref=f2e75] [cursor=pointer]:
+            - checkbox "Pepito" [ref=f2e76]
+            - generic [ref=f2e77]: Pepito
+          - generic [ref=f2e79] [cursor=pointer]:
+            - checkbox "Malta" [ref=f2e80]
+            - generic [ref=f2e81]: Malta
+          - generic [ref=f2e83] [cursor=pointer]:
+            - checkbox "Refresco" [ref=f2e84]
+            - generic [ref=f2e85]: Refresco
+          - generic [ref=f2e87] [cursor=pointer]:
+            - checkbox "Cerveza" [ref=f2e88]
+            - generic [ref=f2e89]: Cerveza
+      - generic [ref=f2e90]:
+        - generic [ref=f2e91]: Monto total
+        - spinbutton "Monto total" [ref=f2e92]
+      - button "Agregar Entrada" [disabled] [ref=f2e94]
+      - generic [ref=f2e95]:
+        - generic [ref=f2e104]:
+          - heading "Resumen de ventas" [level=3] [ref=f2e105]
+          - generic [ref=f2e106]:
+            - generic [ref=f2e107]:
+              - generic [ref=f2e108]: "0"
+              - generic [ref=f2e109]: Perro
+            - generic [ref=f2e110]:
+              - generic [ref=f2e111]: "5"
+              - generic [ref=f2e112]: Hamburguesa
+            - generic [ref=f2e113]:
+              - generic [ref=f2e114]: "0"
+              - generic [ref=f2e115]: Pepito
+            - generic [ref=f2e116]:
+              - generic [ref=f2e117]: "0"
+              - generic [ref=f2e118]: Malta
+            - generic [ref=f2e119]:
+              - generic [ref=f2e120]: "0"
+              - generic [ref=f2e121]: Refresco
+            - generic [ref=f2e122]:
+              - generic [ref=f2e123]: "0"
+              - generic [ref=f2e124]: Cerveza
+        - table [ref=f2e126]:
+          - rowgroup [ref=f2e127]:
+            - row [ref=f2e128]:
+              - columnheader "Nº" [ref=f2e129]
+              - columnheader "Tipo" [ref=f2e130]
+              - columnheader "Detalle" [ref=f2e131]
+              - columnheader "Monto" [ref=f2e132]
+          - rowgroup [ref=f2e133]:
+            - row [ref=f2e134]:
+              - cell "001" [ref=f2e135]
+              - cell "Entrada" [ref=f2e136]
+              - cell "Efectivo · Bs · 5 Hamburguesa (de chuleta)" [ref=f2e137]
+              - cell "50,00 Bs" [ref=f2e138]
+        - generic [ref=f2e97]:
+          - generic [ref=f2e98]: Balance Viernes
+          - generic [ref=f2e99]: 50,00 $
+      - button "Cerrar Viernes" [ref=f2e100] [cursor=pointer]

@@ -1,0 +1,53 @@
+- generic [active] [ref=f3e1]:
+  - main [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - heading "Caja Simplificada" [level=1] [ref=f3e4]
+      - button "Cerrar sesión" [ref=f3e5] [cursor=pointer]
+    - generic [ref=f3e6]:
+      - generic [ref=f3e7]:
+        - generic [ref=f3e8]: Monto
+        - spinbutton "Monto" [ref=f3e9]
+        - generic [ref=f3e10]: Escriba el monto en números.
+      - generic [ref=f3e11]:
+        - generic [ref=f3e12]: Nº de transacción del banco (solo para entradas)
+        - textbox "Nº de transacción del banco (solo para entradas)" [ref=f3e13]:
+          - /placeholder: "Ej: TXN-98765"
+        - generic [ref=f3e14]: Número que aparece en la aplicación del banco.
+      - generic [ref=f3e15]:
+        - generic [ref=f3e16]: Motivo del gasto (solo para salidas)
+        - textbox "Motivo del gasto (solo para salidas)" [ref=f3e17]:
+          - /placeholder: "Ej: Compra de medicinas"
+        - generic [ref=f3e18]: Breve descripción de para qué se usó el dinero.
+      - generic [ref=f3e19]:
+        - button "Agregar Entrada" [disabled] [ref=f3e20]
+        - button "Agregar Salida" [disabled] [ref=f3e21]
+    - generic [ref=f3e22]:
+      - table [ref=f3e24]:
+        - rowgroup [ref=f3e25]:
+          - row [ref=f3e26]:
+            - columnheader "Nº Transacción" [ref=f3e27]
+            - columnheader "Tipo" [ref=f3e28]
+            - columnheader "Monto" [ref=f3e29]
+            - columnheader "Referencia / Motivo" [ref=f3e30]
+        - rowgroup [ref=f3e31]:
+          - row [ref=f3e32]:
+            - cell "001" [ref=f3e33]
+            - cell "Entrada" [ref=f3e34]
+            - cell "1500,00 US$" [ref=f3e35]
+            - cell "TXN-12345" [ref=f3e36]
+          - row [ref=f3e37]:
+            - cell "002" [ref=f3e38]
+            - cell "Salida" [ref=f3e39]
+            - cell "350,00 US$" [ref=f3e40]
+            - cell "Compra de víveres" [ref=f3e41]
+          - row [ref=f3e56]:
+            - cell "003" [ref=f3e57]
+            - cell "Entrada" [ref=f3e58]
+            - cell "500,00 US$" [ref=f3e59]
+            - cell "BANK-999" [ref=f3e60]
+      - generic [ref=f3e42]:
+        - generic [ref=f3e43]: Balance Total
+        - generic [ref=f3e44]: 1650,00 US$
+    - button "Generar Cierre Dominical" [ref=f3e45] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f3e51] [cursor=pointer]
+  - alert [ref=f3e55]

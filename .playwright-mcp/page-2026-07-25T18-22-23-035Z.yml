@@ -1,0 +1,62 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - heading "Caja Simplificada" [level=1] [ref=e4]
+    - button "Cerrar sesión" [ref=e5]
+  - generic [ref=e6]:
+    - heading "Apertura del día" [level=2] [ref=e7]
+    - paragraph [ref=e8]: Toque el día que va a trabajar.
+    - generic [ref=e9]:
+      - button "Viernes (abierto)" [ref=e10]
+      - button "Sábado (abierto)" [ref=e11]
+      - button "Domingo" [ref=e12]
+  - generic [ref=e13]:
+    - heading "Viernes" [level=2] [ref=e14]
+    - paragraph [ref=e15]: "Abierto: 25/7/2026, 14:22:22"
+    - table [ref=e17]:
+      - rowgroup [ref=e18]:
+        - row [ref=e19]:
+          - columnheader "Nº" [ref=e20]
+          - columnheader "Tipo" [ref=e21]
+          - columnheader "Método" [ref=e22]
+          - columnheader "Monto" [ref=e23]
+          - columnheader "Referencia / Motivo" [ref=e24]
+      - rowgroup [ref=e25]:
+        - row [ref=e26]:
+          - cell "001" [ref=e27]
+          - cell "Entrada" [ref=e28]
+          - cell "Pago Móvil" [ref=e29]
+          - cell "1500,00 US$" [ref=e30]
+          - cell "TXN-12345" [ref=e31]
+    - generic [ref=e32]:
+      - generic [ref=e33]: Balance Viernes
+      - text: 1500,00 US$
+  - generic [ref=e34]:
+    - heading "Sábado" [level=2] [ref=e35]
+    - paragraph [ref=e36]: "Abierto: 25/7/2026, 14:22:22"
+    - table [ref=e38]:
+      - rowgroup [ref=e39]:
+        - row [ref=e40]:
+          - columnheader "Nº" [ref=e41]
+          - columnheader "Tipo" [ref=e42]
+          - columnheader "Método" [ref=e43]
+          - columnheader "Monto" [ref=e44]
+          - columnheader "Referencia / Motivo" [ref=e45]
+      - rowgroup [ref=e46]:
+        - row [ref=e47]:
+          - cell "002" [ref=e48]
+          - cell "Salida" [ref=e49]
+          - cell "-" [ref=e50]
+          - cell "350,00 US$" [ref=e51]
+          - cell "Compra de víveres" [ref=e52]
+    - generic [ref=e53]:
+      - generic [ref=e54]: Balance Sábado
+      - text: "-350,00 US$"
+  - generic [ref=e55]: Balance General Fin de Semana1150,00 US$
+  - generic [ref=e57]:
+    - heading "Cierre del día" [level=2] [ref=e58]
+    - paragraph [ref=e59]: Toque el día que desea cerrar y guardar.
+    - generic [ref=e60]:
+      - button "Cerrar Viernes" [ref=e61]
+      - button "Cerrar Sábado" [ref=e62]
+      - button "Cerrar Domingo" [disabled] [ref=e63]
+    - button "Generar Cierre Dominical General" [ref=e64]

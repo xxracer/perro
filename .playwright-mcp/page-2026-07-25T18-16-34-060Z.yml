@@ -1,0 +1,49 @@
+- generic [active] [ref=f6e1]:
+  - button "Open Next.js Dev Tools" [ref=f6e18] [cursor=pointer]
+  - alert [ref=f6e22]
+  - main [ref=f6e23]:
+    - generic [ref=f6e24]:
+      - heading "Caja Simplificada" [level=1] [ref=f6e25]
+      - button "Cerrar sesión" [ref=f6e26] [cursor=pointer]
+    - alert [ref=f6e67]: "No se pudo guardar el cierre: Vercel Blob: Failed to retrieve the client token"
+    - generic [ref=f6e27]:
+      - generic [ref=f6e28]:
+        - generic [ref=f6e29]: Monto
+        - spinbutton "Monto" [ref=f6e30]
+        - generic [ref=f6e31]: Escriba el monto en números.
+      - generic [ref=f6e32]:
+        - generic [ref=f6e33]: Nº de transacción del banco (solo para entradas)
+        - textbox "Nº de transacción del banco (solo para entradas)" [ref=f6e34]:
+          - /placeholder: "Ej: TXN-98765"
+        - generic [ref=f6e35]: Número que aparece en la aplicación del banco.
+      - generic [ref=f6e36]:
+        - generic [ref=f6e37]: Motivo del gasto (solo para salidas)
+        - textbox "Motivo del gasto (solo para salidas)" [ref=f6e38]:
+          - /placeholder: "Ej: Compra de medicinas"
+        - generic [ref=f6e39]: Breve descripción de para qué se usó el dinero.
+      - generic [ref=f6e40]:
+        - button "Agregar Entrada" [disabled] [ref=f6e41]
+        - button "Agregar Salida" [disabled] [ref=f6e42]
+    - generic [ref=f6e43]:
+      - table [ref=f6e45]:
+        - rowgroup [ref=f6e46]:
+          - row [ref=f6e47]:
+            - columnheader "Nº Transacción" [ref=f6e48]
+            - columnheader "Tipo" [ref=f6e49]
+            - columnheader "Monto" [ref=f6e50]
+            - columnheader "Referencia / Motivo" [ref=f6e51]
+        - rowgroup [ref=f6e52]:
+          - row [ref=f6e53]:
+            - cell "001" [ref=f6e54]
+            - cell "Entrada" [ref=f6e55]
+            - cell "1500,00 US$" [ref=f6e56]
+            - cell "TXN-12345" [ref=f6e57]
+          - row [ref=f6e58]:
+            - cell "002" [ref=f6e59]
+            - cell "Salida" [ref=f6e60]
+            - cell "350,00 US$" [ref=f6e61]
+            - cell "Compra de víveres" [ref=f6e62]
+      - generic [ref=f6e63]:
+        - generic [ref=f6e64]: Balance Total
+        - generic [ref=f6e65]: 1150,00 US$
+    - button "Generar Cierre Dominical" [ref=f6e66] [cursor=pointer]
