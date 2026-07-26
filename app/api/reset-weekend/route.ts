@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sql } from "@/lib/neon";
+import { getSql } from "@/lib/neon";
 import { requireAuth } from "@/lib/auth";
 
 export async function POST(request: Request): Promise<NextResponse> {
@@ -10,6 +10,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
 
   try {
+    const sql = getSql();
     await sql`TRUNCATE transactions, day_closures`;
     return NextResponse.json({ success: true });
   } catch (error) {

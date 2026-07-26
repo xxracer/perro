@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sql } from "@/lib/neon";
+import { getSql } from "@/lib/neon";
 import { requireAuth } from "@/lib/auth";
 import { DAYS, type DayOfWeek } from "@/lib/days";
 
@@ -26,6 +26,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
 
   try {
+    const sql = getSql();
     await sql`
       INSERT INTO day_closures (day, closed_at)
       VALUES (${body.day}, NOW())
