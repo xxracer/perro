@@ -268,51 +268,193 @@ export default function CajaSimplificada() {
     }
   };
 
-  const generatePdfBlob = (title: string, txs: Transaction[], total: number): Blob => {
-    const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+  const formatTransactionDetail = (tx: Transaction): string => {
+    if (tx.type === "Salida") return tx.reason ?? "";
+    const methodText = tx.method ?? "";
+    const refText = tx.bankReference ? ` · Ref: ${tx.bankReference}` : "";
+    const productsText = tx.products
+      ?.map((p) => {
+        const subtype = p.subtype ? ` (${p.subtype})` : "";
+        return `${p.quantity} ${p.product}${subtype}`;
+      })
+      .join(", ");
+    let detail = `${methodText} · ${tx.currency}${refText}`;
+    if (productsText) detail += ` · ${productsText}`;
+    return detail;
+  };
+
+  const drawHeader = (doc: jsPDF, title: string, subtitle?: string) => {
     const dateLabel = shortDate(new Date());
 
-    doc.setFontSize(18);
-    doc.text(`${title} - ${dateLabel}`, 20, 20);
+    doc.setFillColor(21, 101, 192);
+    doc.rect(0, 0, 210, 32, "F");
 
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    doc.text("Caja Simplificada", 20, 18);
+
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text(`${title} · ${dateLabel}`, 20, 26);
+
+    if (subtitle) {
+      doc.setTextColor(80, 80, 80);
+      doc.setFontSize(10);
+      doc.text(subtitle, 20, 38);
+    }
+  };
+
+  const drawTableHeader = (doc: jsPDF, y: number) => {
+    doc.setFillColor(230, 240, 250);
+    doc.rect(16, y - 6, 178, 10, "F");
+
+    doc.setTextColor(21, 101, 192);
     doc.setFontSize(9);
-    doc.text("Nº", 20, 35);
-    doc.text("Tipo", 34, 35);
-    doc.text("Detalle", 58, 35);
-    doc.text("Monto", 130, 35);
+    doc.setFont("helvetica", "bold");
+    doc.text("Nº", 20, y);
+    doc.text("Tipo", 36, y);
+    doc.text("Detalle", 60, y);
+    doc.text("Monto", 172, y, { align: "right" });
+    return y + 10;
+  };
 
-    let y = 42;
+  const drawTransactionRow = (doc: jsPDF, tx: Transaction, y: number): number => {
+    const isEntry = tx.type === "Entrada";
+    doc.setTextColor(isEntry ? 46 : 198, isEntry ? 125 : 40, isEntry ? 50 : 40);
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "bold");
+    doc.text(tx.id, 20, y);
+    doc.text(tx.type, 36, y);
+
+    doc.setTextColor(40, 40, 40);
+    doc.setFont("helvetica", "normal");
+    const detailLines = doc.splitTextToSize(formatTransactionDetail(tx), 105);
+    doc.text(detailLines, 60, y);
+
+    doc.setTextColor(isEntry ? 46 : 198, isEntry ? 125 : 40, isEntry ? 50 : 40);
+    doc.setFont("helvetica", "bold");
+    doc.text(formatCurrency(tx.amount, tx.currency), 188, y, { align: "right" });
+
+    const lineHeight = 4.2;
+    return y + Math.max(6, detailLines.length * lineHeight) + 1;
+  };
+
+  const drawSummaryBox = (doc: jsPDF, title: string, value: string, x: number, y: number, color: [number, number, number]) => {
+    doc.setFillColor(color[0], color[1], color[2]);
+    doc.roundedRect(x, y, 55, 22, 3, 3, "F");
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "normal");
+    doc.text(title, x + 4, y + 8);
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.text(value, x + 4, y + 17);
+  };
+
+  const generatePdfBlob = (title: string, txs: Transaction[], total: number): Blob => {
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+    drawHeader(doc, title);
+
+    const entriesTotal = txs.filter((t) => t.type === "Entrada").reduce((s, t) => s + t.amount, 0);
+    const exitsTotal = txs.filter((t) => t.type === "Salida").reduce((s, t) => s + t.amount, 0);
+
+    let y = 48;
+    drawSummaryBox(doc, "ENTRADAS", formatCurrency(entriesTotal, "$"), 20, y, [46, 125, 50]);
+    drawSummaryBox(doc, "SALIDAS", formatCurrency(exitsTotal, "$"), 78, y, [198, 40, 40]);
+    drawSummaryBox(doc, "BALANCE", formatCurrency(total, "$"), 136, y, [21, 101, 192]);
+
+    y += 34;
+    y = drawTableHeader(doc, y);
+
     txs.forEach((tx) => {
-      let detail = "";
-      if (tx.type === "Entrada") {
-        const methodText = tx.method ?? "";
-        const refText = tx.bankReference ? ` · Ref: ${tx.bankReference}` : "";
-        const productsText = tx.products
-          ?.map((p) => {
-            const subtype = p.subtype ? ` (${p.subtype})` : "";
-            return `${p.quantity} ${p.product}${subtype}`;
-          })
-          .join(", ");
-        detail = `${methodText} · ${tx.currency}${refText}`;
-        if (productsText) detail += ` · ${productsText}`;
-      } else if (tx.type === "Salida") {
-        detail = tx.reason ?? "";
+      if (y > 260) {
+        doc.addPage();
+        y = drawTableHeader(doc, 20);
       }
+      y = drawTransactionRow(doc, tx, y);
+    });
 
-      doc.text(tx.id, 20, y);
-      doc.text(tx.type, 34, y);
-      doc.text(detail, 58, y);
-      doc.text(formatCurrency(tx.amount, tx.currency), 130, y);
-      y += 7;
-      if (y > 270) {
+    doc.setDrawColor(21, 101, 192);
+    doc.setLineWidth(0.5);
+    doc.line(16, y + 2, 194, y + 2);
+
+    doc.setTextColor(21, 101, 192);
+    doc.setFontSize(13);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Balance Total: ${formatCurrency(total, "$")}`, 20, y + 10);
+
+    return doc.output("blob");
+  };
+
+  const generateWeekendPdfBlob = (
+    title: string,
+    grouped: Record<DayOfWeek, Transaction[]>,
+    total: number
+  ): Blob => {
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+    drawHeader(doc, title, "Resumen consolidado del fin de semana");
+
+    const weekendTotals = DAYS.map((day) => ({
+      day,
+      balance: calculateBalance(grouped[day]),
+      entries: grouped[day].filter((t) => t.type === "Entrada").reduce((s, t) => s + t.amount, 0),
+      exits: grouped[day].filter((t) => t.type === "Salida").reduce((s, t) => s + t.amount, 0),
+    }));
+
+    let y = 44;
+    weekendTotals.forEach((t, i) => {
+      const x = 20 + i * 58;
+      drawSummaryBox(doc, t.day.toUpperCase(), formatCurrency(t.balance, "$"), x, y, [21, 101, 192]);
+    });
+
+    y += 30;
+    doc.setTextColor(80, 80, 80);
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Entradas: ${formatCurrency(weekendTotals.reduce((s, t) => s + t.entries, 0), "$")}    Salidas: ${formatCurrency(weekendTotals.reduce((s, t) => s + t.exits, 0), "$")}`, 20, y);
+
+    y += 12;
+    DAYS.forEach((day) => {
+      const dayTxs = grouped[day];
+      if (dayTxs.length === 0) return;
+
+      if (y > 230) {
         doc.addPage();
         y = 20;
       }
+
+      doc.setFillColor(255, 243, 224);
+      doc.roundedRect(16, y - 8, 178, 10, 2, 2, "F");
+      doc.setTextColor(239, 108, 0);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text(`${day} — Balance ${formatCurrency(calculateBalance(dayTxs), "$")}`, 20, y - 2);
+      y += 8;
+
+      y = drawTableHeader(doc, y);
+      dayTxs.forEach((tx) => {
+        if (y > 260) {
+          doc.addPage();
+          y = drawTableHeader(doc, 20);
+        }
+        y = drawTransactionRow(doc, tx, y);
+      });
+
+      y += 10;
     });
 
-    doc.setFontSize(14);
+    doc.setDrawColor(21, 101, 192);
+    doc.setLineWidth(0.6);
+    doc.line(16, y + 2, 194, y + 2);
+
     doc.setTextColor(21, 101, 192);
-    doc.text(`Balance Total: ${formatCurrency(total, "$")}`, 20, y + 8);
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Balance General Fin de Semana: ${formatCurrency(total, "$")}`, 20, y + 10);
 
     return doc.output("blob");
   };
@@ -430,9 +572,13 @@ export default function CajaSimplificada() {
   };
 
   const closeWeekend = async () => {
-    const weekendTxs = DAYS.flatMap((day) =>
-      records[day].transactions.map((tx) => ({ ...tx, day }))
-    ) as (Transaction & { day: DayOfWeek })[];
+    const grouped: Record<DayOfWeek, Transaction[]> = {
+      Viernes: records.Viernes.transactions,
+      Sábado: records.Sábado.transactions,
+      Domingo: records.Domingo.transactions,
+    };
+
+    const weekendTxs = DAYS.flatMap((day) => grouped[day].map((tx) => ({ ...tx, day })));
 
     if (weekendTxs.length === 0) {
       setAlert({ type: "error", message: "No hay movimientos del fin de semana para cerrar." });
@@ -446,7 +592,7 @@ export default function CajaSimplificada() {
       const today = shortDate(new Date());
       const safeLabel = safeFilename("Cierre Dominical General");
 
-      const pdfBlob = generatePdfBlob("Cierre Dominical General", weekendTxs as unknown as Transaction[], totalBalance);
+      const pdfBlob = generateWeekendPdfBlob("Cierre Dominical General", grouped, totalBalance);
       const jsonBlob = new Blob([JSON.stringify(weekendTxs, null, 2)], { type: "application/json" });
 
       downloadBlob(pdfBlob, `${safeLabel}-${today}.pdf`);
@@ -454,7 +600,7 @@ export default function CajaSimplificada() {
 
       let blobWarning = "";
       try {
-        await uploadDayFiles("Cierre Dominical General", weekendTxs as unknown as Transaction[], totalBalance);
+        await uploadDayFiles("Cierre Dominical General", weekendTxs, totalBalance);
       } catch (error) {
         const message = error instanceof Error ? error.message : "Error inesperado";
         blobWarning = ` Respaldo en la nube no disponible: ${message}`;
